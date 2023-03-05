@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "chowbuddy-customer",
-    "slug": "chowbuddy-customer",
+    "name": "chowbuddy",
+    "slug": "chowbuddy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
