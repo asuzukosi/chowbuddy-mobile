@@ -2,7 +2,7 @@ import axios from 'axios'
 import BASE_URL from './base'
 
 
-const getAllRestaurants = () => {
+export const getAllRestaurants = () => {
     axios.get(BASE_URL+"/restaurants/")
          .then((resposne)=>{
             resposne.data
@@ -13,7 +13,7 @@ const getAllRestaurants = () => {
 }
 
 
-const searchAllRestaurants = (query) => {
+export const searchAllRestaurants = (query) => {
     axios.get(BASE_URL+"/restaurants/?search="+query)
          .then((resposne)=>{
             return resposne.data
@@ -24,7 +24,7 @@ const searchAllRestaurants = (query) => {
 }
 
 
-const getAllDishesForRestaurant = (restaurantID) => {
+export const getAllDishesForRestaurant = (restaurantID) => {
     axios.get(BASE_URL+"/restaurants/"+restaurantID+"/dishes")
          .then((resposne)=>{
             return resposne.data
@@ -34,7 +34,7 @@ const getAllDishesForRestaurant = (restaurantID) => {
          })
 }
 
-const makeOrder = (dishorders, restaurantID, custoemrId, delivererId) =>{
+export const makeOrder = (dishorders, restaurantID, custoemrId, delivererId) =>{
     axios.post(BASE_URL+"/mealorders/create_order/", {dishorders: dishorders, customer: custoemrId, restaurant:restaurantID, deliverer:delivererId})
          .then((resposne)=>{
             return resposne.data
@@ -44,7 +44,7 @@ const makeOrder = (dishorders, restaurantID, custoemrId, delivererId) =>{
          })
 }
 
-const getOrderInformation = (orderID) => {
+export const getOrderInformation = (orderID) => {
     axios.get(BASE_URL+"/mealorders/"+orderID)
          .then((resposne)=>{
             return resposne.data
@@ -54,7 +54,7 @@ const getOrderInformation = (orderID) => {
          })
 }
 
-const getAllOrders = () => {
+export const getAllOrders = () => {
     axios.get(BASE_URL+"/mealorders/")
          .then((resposne)=>{
             return resposne.data
@@ -64,7 +64,7 @@ const getAllOrders = () => {
          })
 }
 
-const getAllOrdersByCustomer = (customerId) => {
+export const getAllOrdersByCustomer = (customerId) => {
     axios.get(BASE_URL+"/mealorders/get_customers_orders", {customerId: customerId})
          .then((resposne)=>{
             return resposne.data
@@ -74,7 +74,7 @@ const getAllOrdersByCustomer = (customerId) => {
          })
 }
 
-const getAllOrdersFromARestaurant = (restaruantId)=>{
+export const getAllOrdersFromARestaurant = (restaruantId)=>{
     axios.get(BASE_URL+"/mealorders/get_restaurants_orders", {restaruantId:restaruantId})
          .then((resposne)=>{
             return resposne.data

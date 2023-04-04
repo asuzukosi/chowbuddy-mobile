@@ -1,7 +1,7 @@
 import axios from 'axios'
 import BASE_URL from './base'
 
-const getDelivererCurrentLocation = (delivererId) => {
+export const getDelivererCurrentLocation = (delivererId) => {
     // get the current location of a driver
     axios.get(BASE_URL+"/deliverers/"+delivererId)
          .then((response)=>{
@@ -16,7 +16,7 @@ const getDelivererCurrentLocation = (delivererId) => {
          })
 }
 
-const sendDeliverersCurrentLocation = (longitude, latitude, delivererId) => {
+export const sendDeliverersCurrentLocation = (longitude, latitude, delivererId) => {
     // send the current location of the deliverer
     axios.post(BASE_URL + '/deliverers/' + delivererId + "/updata_longlat/", {longitude: longitude, latitude: latitude})
          .then((response) => {
@@ -27,7 +27,7 @@ const sendDeliverersCurrentLocation = (longitude, latitude, delivererId) => {
          })
 }
 
-const confirmDelivery = (deliveryId) => {
+export const confirmDelivery = (deliveryId) => {
     axios.get(BASE_URL + '/deliveries/' + deliveryId + '/complete')
          .then((response) => {
             return response.data
@@ -37,7 +37,7 @@ const confirmDelivery = (deliveryId) => {
          })
 }
 
-const getDelivererInformation = (deliveryId) => {
+export const getDelivererInformation = (deliveryId) => {
       axios.get(BASE_URL + '/deliveries/' + deliveryId )
             .then((response) => {
                return response.data})
@@ -46,7 +46,7 @@ const getDelivererInformation = (deliveryId) => {
             })
 }
 
-const getAllDeliverersCloseToLoction = (longitude, latitude)=>{
+export const getAllDeliverersCloseToLoction = (longitude, latitude)=>{
       axios.post(BASE_URL + '/deliverers/get_closest_deliverers', {longitude:longitude, latitude:latitude})
            .then((response) => {
             return response.data
@@ -57,7 +57,7 @@ const getAllDeliverersCloseToLoction = (longitude, latitude)=>{
             
 }
 
-const getAllDeliveries = () => {
+export const getAllDeliveries = () => {
       axios.get(BASE_URL + '/deliveries/')
            .then((response) => {
                return response.data
@@ -67,7 +67,7 @@ const getAllDeliveries = () => {
            })
 }
 
-const getAllDeliverers = () => {
+export const getAllDeliverers = () => {
       axios.get(BASE_URL + '/deliverys/')
            .then((response) => {
                return response.data

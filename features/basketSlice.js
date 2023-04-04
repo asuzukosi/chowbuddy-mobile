@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { getBasket } from '../storage/async_storage';
 
 const initialState = {
-  items: [],
+  items: getBasket() ,
 }
 
 export const basketSlice = createSlice({
@@ -10,11 +11,11 @@ export const basketSlice = createSlice({
   reducers: {
     addToBasket: (state, action) => {
       state.items  = [...state.items, action.payload];
-      console.log("Dispatcher fired...")
+      updateBasket(state.items);
     },
     removeFromBasket: (state, action) => {
         state.items = state.items.filter( item => item.id != action.payload.id && item.restaurantId != action.payload.id)
-        console.log("Removed from basket")
+        updateBasket(state.items);
     },
   },
 })

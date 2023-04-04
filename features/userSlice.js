@@ -1,60 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { getUser } from '../storage/async_storage'
 
 const initialState = {
-  items: [],
+  isLoggedIn: getUser() !== null, // if the getUser method does not return null then the user is logged in
+  user: getUser(),
+  userType: getUser().type,
+  currentLocation: [getUser().longitude, getUser().latitude],
 }
 
-export const basketSlice = createSlice({
-  name: 'basket',
+export const userSlice = createSlice({
+  name: 'user',
   initialState,
   reducers: {
-    addToBasket: (state, action) => {
-      state.items  = [...state.items, action.payload];
-      console.log("Dispatcher fired...")
+    loginUser: (state, action) => {
+        state.user = action.payload.user
+        state.isLoggedIn = true
+        state.userType = action.payload.type
+        state.currentLocation = action.payload.location
     },
-    removeFromBasket: (state, action) => {
-        state.items = state.items.filter( item => item.id != action.payload.id && item.restaurantId != action.payload.id)
-        console.log("Removed from basket")
+    logoutUser: (state, action) => {
+        state.user = {}
+        state.isLoggedIn = false
+        state.userType = null
+        state.currentLocation = null
     },
+    setCurrentLocation: (state, action) => {
+        state.currentLocation = action.payload.location
+    },
+    followUser: (state, action) => {},
+    unfollowUser: (state, action) => {},
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
-export const selectBasketItem =(state)=> state.basket.items;
-export const selectBasketItemByRestaurantIdAndDishId = (state, restaurantId, dishId) => {
-    return state.basket.items.filter(item => item.restaurantId === restaurantId && item.id === dishId);
-    
-}
+export const { loginUser, logoutUser, setCurrentLocation } = userSlice.actions;
 
-export const calculateBasketTotalPrice = (state) => {
-    if(state.basket.items.length < 1){
-        return 0.00
-    }
-    let total = 0;
-    state.basket.items.forEach(item => {
-        let number = item.price.substring(1);
-        number = parseFloat(number);
-        total += number;
-    })
-    return total
-}
+export const isLoggedIn =(state)=> state.isLoggedIn;
+export const getUserDetails =()=> state.user;
+export const getUserCurrentLocation =()=> state.currentLocation;
+export const getUserType =()=> state.userType;
 
-export const getGroupedItems = (state) => {
-  let groupedItems = []
-  let added = []
-  state.basket.items.forEach((item)=>{
-    if(!added.includes(item)){
-      instances = state.basket.items.filter(i => item.restaurantId === i.restaurantId && item.id === i.id);
-      let grouping = {
-        item: item,
-        count: instances.length
-      }
-      groupedItems.push(grouping)
-      added.push(item)
-    }
-  })
-
-  return groupedItems;
-}
-export default basketSlice.reducer;
+export default userSlice.reducer;
