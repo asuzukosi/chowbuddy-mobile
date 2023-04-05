@@ -11,7 +11,7 @@ export const storeUser = async (value) => {
 
 export const getUser = async () => {
     try {
-      const value = await AsyncStorage.setItem('user')
+      const value = await AsyncStorage.getItem('user')
       return value
     } catch (e) {
       console.error(e);
@@ -36,7 +36,7 @@ export const storeBasket = async (value) => {
 
 export const getBasket = async () => {
     try {
-      const value = await AsyncStorage.setItem('basket')
+      const value = await AsyncStorage.getItem('basket')
       if(value === null){
         return []
       }
