@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import StartPage from './components/screens/StartPage'
 import SignUpPage from './components/screens/SignUpPage';
+import HomePage from './components/screens/HomePage';
 import OrdersPage from './components/screens/OrdersPage';
 import CommunityPage from './components/screens/CommunityPage';
 import LoginPage from './components/screens/LoginPage';
@@ -38,6 +39,7 @@ export default function App() {
               <Stack.Screen name="Start" component={StartPage}/>
               <Stack.Screen name="SignUp" component={SignUpPage}/>
               <Stack.Screen name="Login" component={LoginPage}/>
+              <Stack.Screen name="Home" component={HomePage}/>
           </>)}
         </Stack.Navigator>
       </Provider>
