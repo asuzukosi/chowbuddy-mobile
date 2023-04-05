@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function CommunityPage() {
   return (
-    <View>
-      <Text>CommunityPage</Text>
+    <View className="flex">
+      <Text>Community</Text>
     </View>
   )
 }
