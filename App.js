@@ -7,6 +7,7 @@ import SignUpPage from './components/screens/SignUpPage';
 import HomePage from './components/screens/HomePage';
 import OrdersPage from './components/screens/OrdersPage';
 import CommunityPage from './components/screens/CommunityPage';
+import SearchPage from './components/screens/SearchPage';
 import LoginPage from './components/screens/LoginPage';
 import CommunitySelectionPage from './components/screens/CommunitySelectionPage';
 import ProfilePage from './components/screens/ProfilePage';
@@ -40,6 +41,7 @@ export default function App() {
               <Stack.Screen name="SignUp" component={SignUpPage}/>
               <Stack.Screen name="Login" component={LoginPage}/>
               <Stack.Screen name="Home" component={HomePage}/>
+              <Stack.Screen name="Search" component={SearchPage}/>
           </>)}
         </Stack.Navigator>
       </Provider>

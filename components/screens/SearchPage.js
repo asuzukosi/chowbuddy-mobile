@@ -1,7 +1,5 @@
 import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
-import { View, Text} from 'react-native'
-import React from 'react'
 import NavigationBar from '../NavigationBar'
 import { SearchBar } from 'react-native-elements';
 import CommunitiesScrollBar from '../CommunitiesScrollBar';
@@ -9,7 +7,7 @@ import RestaurantScrollBar from '../RestaurantScrollBar';
 import ButtomNaviagationBar from '../ButtomNaviagationBar';
 
 
-export default function SearchPage() {
+export default function SearchPage({navigation}) {
   return (
     <View className="flex-1">
       <NavigationBar navigation={navigation}/>
@@ -30,7 +28,7 @@ export default function SearchPage() {
         <RestaurantScrollBar/>
       </ScrollView>
       </View>
-      <ButtomNaviagationBar/>
+      <ButtomNaviagationBar navigation={navigation}/>
     </View>
   )
 }

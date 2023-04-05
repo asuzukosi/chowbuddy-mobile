@@ -13,13 +13,12 @@ export default function HomePage({navigation}) {
     <View className="flex-1">
         <NavigationBar navigation={navigation}/>
           <CategoriesGrid/>
-          <ButtomNaviagationBar/>
           <ScrollView>
             <DealsCard/>
             <Text className="text-l ml-2 mt-2 font-extrabold text-gray-600">Restuarants</Text>
             <RestaurantScrollBar/>
           </ScrollView>
-          
+          <ButtomNaviagationBar navigation={navigation}/>
     </View>
   )
 }
