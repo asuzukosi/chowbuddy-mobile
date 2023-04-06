@@ -3,7 +3,7 @@ import React from 'react'
 import MembershipCommunities from '../MembershipCommunities'
 import SuggestedCommunities from '../SuggestedCommunities'
 
-export default function CommunitySelectionPage() {
+export default function CommunitySelectionPage({navigation}) {
   return (
     <View className="flex">
       <View className="">
@@ -12,10 +12,10 @@ export default function CommunitySelectionPage() {
       <View className="flext-1 flex p-4">
         <ScrollView>
           <View className="flex-1 mt-2">
-            <MembershipCommunities/>
+            <MembershipCommunities  navigation={navigation}/>
           </View>
           <View className="mt-6">
-            <SuggestedCommunities/>
+            <SuggestedCommunities navigation={navigation}/>
           </View>
         </ScrollView>
       </View>

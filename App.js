@@ -45,6 +45,7 @@ export default function App() {
               <Stack.Screen name="Orders" component={OrdersPage}/>
               <Stack.Screen name="Profile" component={ProfilePage}/>
               <Stack.Screen name="CommunitySelection" component={CommunitySelectionPage} options ={{presentation: "modal"}}/>
+              <Stack.Screen name="Community" component={CommunityPage}/>
           </>)}
         </Stack.Navigator>
       </Provider>
