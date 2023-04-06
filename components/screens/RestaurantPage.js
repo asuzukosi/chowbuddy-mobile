@@ -24,6 +24,7 @@ export default function RestaurantPage({navigation}) {
                 <RestaurantDishCard/>
                 <RestaurantDishCard/>
             </ScrollView>
+            
        </View>
        <ButtomNaviagationBar navigation={navigation}/>
     </View>

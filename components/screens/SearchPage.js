@@ -22,10 +22,10 @@ export default function SearchPage({navigation}) {
           value={null}
       />
       <Text className="text-l ml-2 mt-2 font-extrabold text-gray-600">Communities</Text>
-      <CommunitiesScrollBar/>
+      <CommunitiesScrollBar navigation={navigation}/>
       <ScrollView>
         <Text className="text-l ml-2 mt-2 font-extrabold text-gray-600">Restaurants</Text>
-        <RestaurantScrollBar/>
+        <RestaurantScrollBar navigation={navigation}/>
       </ScrollView>
       </View>
       <ButtomNaviagationBar navigation={navigation}/>
