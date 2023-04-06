@@ -6,11 +6,11 @@ export default function RestaurantScrollBar({navigation}) {
   return (
         <ScrollView className="mb-20" contentContainerStyle={{paddingHorizontal:15, paddingTop:10}}
         showsHorizontalScrollIndicator={false}>
-            <RestaurantCard/>
-            <RestaurantCard/>
-            <RestaurantCard/>
-            <RestaurantCard/>
-            <RestaurantCard/>
+            <RestaurantCard navigation={navigation}/>
+            <RestaurantCard navigation={navigation}/>
+            <RestaurantCard navigation={navigation}/>
+            <RestaurantCard navigation={navigation}/>
+            <RestaurantCard navigation={navigation}/>
         </ScrollView>
   )
 }

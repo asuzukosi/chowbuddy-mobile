@@ -3,9 +3,9 @@ import React from 'react'
 import { ClockIcon, ShoppingBagIcon} from "react-native-heroicons/outline";
 
 
-export default function RestaurantCard() {
+export default function RestaurantCard({navigation}) {
   return (
-    <TouchableOpacity className="group relative block overflow-hidden rounded-xl mb-4">
+    <TouchableOpacity className="group relative block overflow-hidden rounded-xl mb-4" onPress={()=>{navigation.navigate("Restaurant")}}>
       <View className="absolute right-0 top-0 z-10 rounded-xl bg-indigo-500 p-1.5 text-white transition hover:text-gray-900/75">
         <Text className="text-white">Featured</Text>
       </View>

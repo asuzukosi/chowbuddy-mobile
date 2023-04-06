@@ -16,7 +16,7 @@ export default function SearchPage({navigation}) {
         <Text className="text-2xl ml-2 font-extrabold text-gray-600">Explore</Text>
         {/* Search bar */}
         <SearchBar
-          placeholder="Dish, restuarant or community"
+          placeholder="Dish, restaurant or community"
           onChangeText={()=>{}}
           lightTheme={true}
           value={null}
@@ -24,7 +24,7 @@ export default function SearchPage({navigation}) {
       <Text className="text-l ml-2 mt-2 font-extrabold text-gray-600">Communities</Text>
       <CommunitiesScrollBar/>
       <ScrollView>
-        <Text className="text-l ml-2 mt-2 font-extrabold text-gray-600">Restuarants</Text>
+        <Text className="text-l ml-2 mt-2 font-extrabold text-gray-600">Restaurants</Text>
         <RestaurantScrollBar/>
       </ScrollView>
       </View>
