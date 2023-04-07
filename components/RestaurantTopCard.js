@@ -1,8 +1,8 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
-import { ClockIcon, ShoppingBagIcon} from "react-native-heroicons/outline";
+import { ClockIcon} from "react-native-heroicons/outline";
 
-export default function RestaurantTopCard() {
+export default function RestaurantTopCard({navigation}) {
   return (
     <View>
             <Image source={{uri:"https://guidable.co/wp-content/uploads/2018/10/fake-plastic-food-1487542_1920.jpg"}} className="h-52 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-42"/>

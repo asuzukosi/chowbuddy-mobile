@@ -13,8 +13,8 @@ export default function OrdersPage({navigation}) {
         <View className="p-3">
           <Text className="font-extrabold text-xl">Order Basket</Text>
         </View>
-        <OrderReceiptBox/>
-        <OrderTotalBox/>
+        <OrderReceiptBox navigation={navigation}/>
+        <OrderTotalBox navigation={navigation}/>
       <ButtomNaviagationBar navigation={navigation}/>
     </View>
   )

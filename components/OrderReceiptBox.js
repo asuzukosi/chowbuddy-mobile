@@ -2,7 +2,7 @@ import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import OrderReceiptBoxDishCard from './OrderReceiptBoxDishCard'
 
-export default function OrderReceiptBox() {
+export default function OrderReceiptBox({navigation}) {
   return (
     <View className="h-80 p-4 rounded-lg">
       <ScrollView>

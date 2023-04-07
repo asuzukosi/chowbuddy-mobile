@@ -11,11 +11,15 @@ import SearchPage from './components/screens/SearchPage';
 import LoginPage from './components/screens/LoginPage';
 import CommunitySelectionPage from './components/screens/CommunitySelectionPage';
 import ProfilePage from './components/screens/ProfilePage';
-import RestaurantCard from './components/RestaurantCard';
+import PaymentPage from './components/screens/PaymentPage';
+import DeliveryConfirmationPage from './components/screens/DeliveryConfirmationPage';
+import CreateMealPlans from './components/screens/CreateMealPlans';
+import RestaurantOrdersPage from './components/screens/RestaurantOrdersPage';
 
 import { store } from './store'
 import { Provider } from 'react-redux'
 import RestaurantPage from './components/screens/RestaurantPage';
+
 
 const getIsSignedIn = () => {
   // add business logic for checking if the user is signed in here
@@ -50,6 +54,13 @@ export default function App() {
               <Stack.Screen name="CommunitySelection" component={CommunitySelectionPage} options ={{presentation: "modal"}}/>
               <Stack.Screen name="Community" component={CommunityPage}/>
               <Stack.Screen name="Restaurant" component={RestaurantPage}/>
+              <Stack.Screen name="Payment" component={PaymentPage}/>
+              <Stack.Screen name="DeliveryConfirmation" component={DeliveryConfirmationPage}/>
+              <Stack.Screen name="CreateMealPlans" component={CreateMealPlans}/>
+              <Stack.Screen name="RestaurantOrders" component={RestaurantOrdersPage}/>
+
+
+
           </>)}
         </Stack.Navigator>
       </Provider>
