@@ -12,7 +12,7 @@ export default function PaymentPage({navigation}) {
       <View className="mt-6 p-2">
         <PaymentSummaryCard/>
         <PaymentCard/>
-        <TouchableOpacity className="items-center mt-4 w-80 align-middle ml-6 bg-indigo-600 p-5 rounded-2xl" onPress={()=>{navigation.navigate("DeliveryConfirmation")}}>
+        <TouchableOpacity className="items-center mt-4 w-80 align-middle ml-6 bg-indigo-600 p-5 rounded-2xl" onPress={()=>{navigation.navigate("DeliveryLocationSelection")}}>
           <Text className="text-white text-md font-extrabold">Continue </Text>
         </TouchableOpacity>
       </View>

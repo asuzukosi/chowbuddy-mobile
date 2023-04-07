@@ -2,9 +2,10 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import NavigationBarWithOnlyProfile from '../NavigationBarWithOnlyProfile'
 import MapView, { Marker } from 'react-native-maps'
-import DeliveryTrackingCard from '../DeliveryTrackingCard'
+import DeliveryRequestCard from '../DeliveryRequestCard'
 
-export default function DeliveryTrackingPage({navigation}) {
+
+export default function DeliveryRequest({navigation}) {
   return (
     <View className="flex-1">
       <NavigationBarWithOnlyProfile navigation={navigation}/>
@@ -25,7 +26,7 @@ export default function DeliveryTrackingPage({navigation}) {
             pinColor = "#00CCBB"
         />
         </MapView>
-        <DeliveryTrackingCard navigation={navigation}/>
+        <DeliveryRequestCard navigation={navigation}/>
     </View>
   )
 }

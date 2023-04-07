@@ -1,14 +1,15 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import NavigationBarWithOnlyProfile from '../NavigationBarWithOnlyProfile'
+import NavigationBar from '../NavigationBar'
 import MapView, { Marker } from 'react-native-maps'
-import DeliveryTrackingCard from '../DeliveryTrackingCard'
+import LocationSelectionCard from '../LocationSelectionCard'
 
-export default function DeliveryTrackingPage({navigation}) {
+
+export default function DeliveryLocationSelection({navigation}) {
   return (
     <View className="flex-1">
-      <NavigationBarWithOnlyProfile navigation={navigation}/>
-      <MapView initialRegion={{
+        <NavigationBar navigation={navigation}/>
+        <MapView initialRegion={{
             latitude: 33.518589,
             longitude : -86.810356,
             longitudeDelta: 0.005,
@@ -25,7 +26,7 @@ export default function DeliveryTrackingPage({navigation}) {
             pinColor = "#00CCBB"
         />
         </MapView>
-        <DeliveryTrackingCard navigation={navigation}/>
+        <LocationSelectionCard navigation={navigation}/>
     </View>
   )
 }

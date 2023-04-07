@@ -15,6 +15,9 @@ import PaymentPage from './components/screens/PaymentPage';
 import DeliveryConfirmationPage from './components/screens/DeliveryConfirmationPage';
 import CreateMealPlans from './components/screens/CreateMealPlans';
 import RestaurantOrdersPage from './components/screens/RestaurantOrdersPage';
+import DeliveryLocationSelectionsPage from './components/screens/DeliveryLocationSelection';
+import DeliverRequest from './components/screens/DeliveryRequest';
+import DeliveryTrackingPage from './components/screens/DeliveryTrackingPage';
 
 import { store } from './store'
 import { Provider } from 'react-redux'
@@ -58,7 +61,9 @@ export default function App() {
               <Stack.Screen name="DeliveryConfirmation" component={DeliveryConfirmationPage}/>
               <Stack.Screen name="CreateMealPlans" component={CreateMealPlans}/>
               <Stack.Screen name="RestaurantOrders" component={RestaurantOrdersPage}/>
-
+              <Stack.Screen name="DeliveryLocationSelection" component={DeliveryLocationSelectionsPage}/>
+              <Stack.Screen name="DeliveryRequest" component={DeliverRequest}/>
+              <Stack.Screen name="DeliveryTracking" component={DeliveryTrackingPage}/>
 
 
           </>)}

@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import NavigationBar from '../NavigationBar'
 import ButtomNaviagationBar from '../ButtomNaviagationBar'
@@ -22,7 +22,9 @@ export default function DeliveryConfirmationPage({navigation}) {
                 <DeliveryConfirmationItem/>
             </ScrollView>
             <View className="items-center p-4 bg-gray-300">
-                <Text className="font-bold">2354</Text>
+              <TouchableOpacity onPress={()=>{navigation.navigate("DeliveryLocationSelection")}}>
+                  <Text className="font-bold">2354</Text>
+              </TouchableOpacity>
             </View>
             <VirtualKeyboard onKeyDown={()=>{}} onChange={()=>{}}/>
         </View>
