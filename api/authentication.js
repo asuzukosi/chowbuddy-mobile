@@ -1,27 +1,39 @@
 import axios from 'axios'
-import BASE_URL from './base'
+BASE_URL  = 'http://127.0.0.1:8000'
 
-
-export const loginCustomer = (username, password)=> {
-    axios.post(BASE_URL+"/login/customers/", data={username:username, password:password})
+// function that calls api to login user
+export const loginCustomer = async (username, password)=> {
+    const userData = await axios.post(BASE_URL+"/login/customers", {username:username, password:password})
          .then((response)=>{
             return response.data
          })
          .catch((error)=>{
-            console.log(error)
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
          })
+    return userData
 }
 
-export const registerCustomer = (username,password,first_name,last_name,email,phone_number,address)=> {
-    axios.post(BASE_URL+"/customers/", data={username:username, password:password, first_name:first_name,last_name:last_name, email:email, phone_number:phone_number, address:address})
-         .then((response)=>{})
-         .catch((error)=>{
-            console.error(error)
+// function that calls api to register user
+export const registerCustomer = async (username,password,first_name,last_name,email,phone_number,address)=> {
+      const userData = await axios.post(BASE_URL+"/customers/",{username:username, password:password, first_name:first_name,last_name:last_name, email:email, phone_number:phone_number, address:address})
+         .then((response)=>{
+            return response.data;
          })
+         .catch((error)=>{
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
+         })
+
+      return userData;
     }
 
 export const loginDeliverer = (username, password)=> {
-    axios.post(BASE_URL+"/login/deliverer/", data={username:username, password:password})
+    axios.post(BASE_URL+"/login/deliverer/",{username:username, password:password})
          .then((response)=>{
             return response.data
          })
@@ -31,7 +43,7 @@ export const loginDeliverer = (username, password)=> {
 }
 
 export const registerDeliverer = (username, email, password, location)=> {
-    axios.post(BASE_URL+"/deliverers/", data={username:username, email:email, password:password, location:location})
+    axios.post(BASE_URL+"/deliverers/", {username:username, email:email, password:password, location:location})
          .then((response)=>{
             return response.data
          })
@@ -42,7 +54,7 @@ export const registerDeliverer = (username, email, password, location)=> {
 
 
 export const loginRestaurant = ()=> {
-    axios.post(BASE_URL+"/login/restaurants/", data={username:username, password:password})
+    axios.post(BASE_URL+"/login/restaurants/",{username:username, password:password})
          .then((response)=>{
             return response.data
          })
@@ -52,7 +64,7 @@ export const loginRestaurant = ()=> {
 }
 
 export const registerRestaurant = (name, email, description, address, phone, image, long, lat, rating, ranking, price_level)=> {
-    axios.post(BASE_URL+"/restaurants/", data={username:username, email:email, password:password, location:location})
+    axios.post(BASE_URL+"/restaurants/",{username:username, email:email, password:password, location:location})
         .then((response)=>{
           return response.data
         })

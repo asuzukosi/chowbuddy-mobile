@@ -5,28 +5,27 @@ import MapView, { Marker } from 'react-native-maps'
 import DeliveryRequestCard from '../DeliveryRequestCard'
 
 
-export default function DeliveryRequest({navigation}) {
+export default function DeliveryRequest({navigation, route}) {
   return (
     <View className="flex-1">
       <NavigationBarWithOnlyProfile navigation={navigation}/>
       <MapView initialRegion={{
-            latitude: 33.518589,
-            longitude : -86.810356,
+            latitude: route.params.restaurant.lat,
+            longitude : route.params.restaurant.long,
             longitudeDelta: 0.005,
             latitudeDelta: 0.005,
         }}
         className="flex-1 z-0"
-        // mapType='mutedStandard'
         >
             <Marker
-            coordinate={{ latitude: 33.518589, longitude: -86.810356}}
-            title = "Pickup Point"
+            coordinate={{ latitude: route.params.restaurant.lat, longitude: route.params.restaurant.long}}
+            title = "Restaurant Location"
             description = "Your pickup point" 
             identifier="origin"
             pinColor = "#00CCBB"
         />
         </MapView>
-        <DeliveryRequestCard navigation={navigation}/>
+        <DeliveryRequestCard navigation={navigation} customer={route.params.customer} restaurant={route.params.restaurant} deliverer={route.params.deliverer} order={route.params.order}/>
     </View>
   )
 }

@@ -1,13 +1,32 @@
 import { View, Text, ScrollView } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import ButtomNavigationBarMinimized from '../ButtomNavigationBarMinimized'
 import NavigationBarWithOnlyCommunities from '../NavigationBarWithOnlyCommunities'
 import { MagnifyingGlassIcon, HomeIcon, StarIcon, UserCircleIcon, PlusIcon} from "react-native-heroicons/outline";
 import RestaurantOfferingsSlider from '../RestaurantOfferingsSlider';
 import RestaurantOrderRequestCard from '../RestaurantOrderRequestCard';
+import { getAllDishesForRestaurant } from '../../api/restaurant'
+import { getUserDetails } from '../../features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 export default function RestaurantOrdersPage({navigation}) {
+
+  const [dishes, setDishes] = useState([])
+  const currentUser = useSelector(getUserDetails);
+
+  const getDishesForRestaurant = async () => {
+    if(dishes.length == 0){
+      const apiDishes = await getAllDishesForRestaurant(1)
+      setDishes(apiDishes)
+      console.log('Dishes are ', apiDishes.length)
+    }
+   
+  }
+  
+  getDishesForRestaurant()
+
   return (
     <View className="flex-1">
       <NavigationBarWithOnlyCommunities navigation={navigation}/>
@@ -20,14 +39,14 @@ export default function RestaurantOrdersPage({navigation}) {
             </View>
         <View className=" h-80">
             <ScrollView>
-                <RestaurantOrderRequestCard/>
-                <RestaurantOrderRequestCard/>
-                <RestaurantOrderRequestCard/>
-                <RestaurantOrderRequestCard/>
-                <RestaurantOrderRequestCard/>
+              {
+                dishes?.map(dish => {
+                    return <RestaurantOrderRequestCard user={currentUser} key={dish.id} image={dish.image} name={dish.name}/>
+                })
+              }
             </ScrollView>
         </View>
-        <RestaurantOfferingsSlider/>
+        <RestaurantOfferingsSlider navigation={navigation} dishes={dishes}/>
         </View>
       <ButtomNavigationBarMinimized navigation={navigation}/>
     </View>

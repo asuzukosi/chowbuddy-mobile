@@ -37,13 +37,17 @@ export const confirmDelivery = (deliveryId) => {
          })
 }
 
-export const getDelivererInformation = (deliveryId) => {
-      axios.get(BASE_URL + '/deliveries/' + deliveryId )
+export const getDelivererInformation = async (deliveryId) => {
+      const deliverer = axios.get(BASE_URL + '/deliverers/' + deliveryId )
             .then((response) => {
                return response.data})
             .catch((error) => {
-               console.error(error)
+               console.error(error);
+               console.log(error.response.data);
+               console.log(error.response.status);
+               return null;
             })
+      return deliverer
 }
 
 export const getAllDeliverersCloseToLoction = (longitude, latitude)=>{

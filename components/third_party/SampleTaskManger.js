@@ -19,7 +19,6 @@ import * as Location from 'expo-location';
     }
   };
 
-
 // define the backroud location tak to update the location frequenty
 TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     if (error) {

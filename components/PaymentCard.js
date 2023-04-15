@@ -3,12 +3,12 @@ import React from 'react'
 import { CreditCardIcon } from "react-native-heroicons/outline";
 
 
-export default function PaymentCard() {
+export default function PaymentCard({restaurantName}) {
   return (
     <View className="mt-3 border ml-3 mr-3 border-indigo-600 p-5 border-dashed rounded-lg">
       <View className="flex-row mt-2 mb-2">
         <Text className="font-light flex-1 text-gray-600">
-          UI Unicorn store
+          {restaurantName}
         </Text>
         <Text className="font-light flex-end text-gray-600">
           Order No: 0384893

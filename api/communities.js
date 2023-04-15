@@ -4,31 +4,50 @@ import BASE_URL from './base'
 
 export const getAllCommunitiesOfAUser = (customerId) => {
     // get all communities a user belongs to
-    axios.get(BASE_URL + "/customers/" + customerId + "/my_communities/")
+   const communities = axios.get(BASE_URL + "/customers/" + customerId + "/my_communities/")
          .then((response) => {
             return response.data
          })
-         .catch((err) => {})
+         .catch((error) => {
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
+         })
+   return communities
 }
 
-export const getAllCommunities = () =>{
+export const getAllCommunities = async () =>{
     // get all communites
-    axios.get(BASE_URL + "/communities/")
+    const communities = await axios.get(BASE_URL + "/communities/")
          .then((response) => {
-            return response.data
+            return response.data;
          })
-         .catch((err) => {})
+         .catch((error) => {
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
+         })
+
+    return communities
 
 
 }
 
-export const getSuggestedCommunities = (customerId) => {
+export const getSuggestedCommunities = async (customerId) => {
     // get all communities suggested for a user
-    axios.get(BASE_URL + "/customers/" + customerId + "/suggested_communities/")
+    const communities = axios.get(BASE_URL + "/customers/" + customerId + "/suggested_communities/")
          .then((response) => {
             return response.data
          })
-         .catch((err) => {})
+         .catch((error) => {
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
+         })
+   return communities
 }
 
 export const createCommunity = (name, description, location, image, created_by) => {
@@ -48,33 +67,34 @@ export const createCommunity = (name, description, location, image, created_by) 
          })
 }
 
-export const getAllPostsOnACommunity = (communityId) => {
+export const getAllPostsOnACommunity = async (communityId) => {
     // get all posts in a community
-    axios.get(BASE_URL + "/posts/?community=" +communityId)
+    const posts = await axios.get(BASE_URL + "/posts/?community=" +communityId)
          .then((response) => {
             return response.data
          })
          .catch((error) => {
-            console.error(error)
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
          })
+   return posts
 }
 
 
-export const makePostOnCommunity = (text, image, userId,communityId) => {
+export const makePostOnCommunity = async (text, userId,communityId) => {
     // make a post on a community
-    
-    var bodyFormData = new FormData();
-    bodyFormData.append("text", text)
-    bodyFormData.append("image", image)
-    bodyFormData.append("community", communityId)
-    bodyFormData.append("author", userId)
-
-    axios.post(BASE_URL + "/posts/", bodyFormData, headers=FormData.headers())
+   const post = axios.post(BASE_URL + "/posts/", {text: text, author: userId, community: communityId})
          .then((response)=>{
             return response.data
          }).catch((error)=>{
-            console.log(error)
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
          })
+   return post;
 
 }
 

@@ -2,7 +2,7 @@ import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import RestaurantOfferingCard from './RestaurantOfferingCard'
 
-export default function RestaurantOfferingsSlider({navigation}) {
+export default function RestaurantOfferingsSlider({navigation, dishes}) {
   return (
     <View className="mt-4">
      <View className="flex-row mb-2">
@@ -15,11 +15,13 @@ export default function RestaurantOfferingsSlider({navigation}) {
      </View>
      
       <ScrollView horizontal>
-        <RestaurantOfferingCard/>
-        <RestaurantOfferingCard/>
-        <RestaurantOfferingCard/>
-        <RestaurantOfferingCard/>
-        <RestaurantOfferingCard/>
+        {
+          dishes.map(dish => {
+            return <RestaurantOfferingCard key={dish.id} image={dish.image} name={dish.name} price={dish.price}/>
+          })
+        }
+        
+       
       </ScrollView>
     </View>
   )

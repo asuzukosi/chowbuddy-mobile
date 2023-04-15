@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getUser } from '../storage/async_storage'
 
 const initialState = {
-  isLoggedIn: getUser() !== null, // if the getUser method does not return null then the user is logged in
-  user: getUser(),
-  userType: getUser().type,
-  currentLocation: [getUser().longitude, getUser().latitude],
+  isLoggedIn: false, // if the getUser method does not return null then the user is logged in
+  user: {}, // if the getUser method returns,
+  userType: null,
+  currentLocation: [null, null],
 }
 
 export const userSlice = createSlice({
@@ -16,7 +15,7 @@ export const userSlice = createSlice({
         state.user = action.payload.user
         state.isLoggedIn = true
         state.userType = action.payload.type
-        state.currentLocation = action.payload.location
+        state.currentLocation = [action.payload.longitude, action.payload.latitude]
     },
     logoutUser: (state, action) => {
         state.user = {}
@@ -35,9 +34,9 @@ export const userSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { loginUser, logoutUser, setCurrentLocation } = userSlice.actions;
 
-export const isLoggedIn =(state)=> state.isLoggedIn;
-export const getUserDetails =()=> state.user;
-export const getUserCurrentLocation =()=> state.currentLocation;
-export const getUserType =()=> state.userType;
+export const isLoggedIn =(state)=> state.user.isLoggedIn;
+export const getUserDetails =(state)=> state.user;
+export const getUserCurrentLocation =(state)=> state.user.currentLocation;
+export const getUserType =(state)=> state.user.userType;
 
 export default userSlice.reducer;

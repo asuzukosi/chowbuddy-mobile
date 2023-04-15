@@ -1,5 +1,6 @@
 import axios from 'axios'
-import BASE_URL from './base'
+
+BASE_URL =  'http://127.0.0.1:8000'
 
 export const getAllCustomers  = () => {
     axios.get(BASE_URL+"/customers/")
@@ -11,14 +12,35 @@ export const getAllCustomers  = () => {
          })
 }
 
-export const getSpecificCustomerDetails = (customerId) => {
-    axios.get(BASE_URL+"/customers/"+customerId)
+export const getCustomerBasedOnUserId = async (userId) => {
+   console.log("Using the newly built function")
+   const customer = await axios.get(BASE_URL+"/customers/?user=" + userId)
          .then((response)=>{
             return response.data
          })
-         .catch((err)=>{
-            console.error(err)
+         .catch((error)=>{
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
          })
+   console.log("The retrieved customer is ", customer)
+   return customer[0]
+}
+
+export const getSpecificCustomerDetails = async (customerId) => {
+    const customer = await axios.get(BASE_URL+"/customers/"+customerId + "/")
+         .then((response)=>{
+            return response.data
+         })
+         .catch((error)=>{
+            console.error(error);
+            console.log(error.response.data);
+            console.log(error.response.status);
+            return null;
+         })
+
+   return customer
 }
 
 

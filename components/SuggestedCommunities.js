@@ -1,8 +1,25 @@
 import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import CommunitySelectionCard from './CommunitySelectionCard'
+import { getSuggestedCommunities } from '../api/communities'
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserDetails, loginUser } from '../features/userSlice';
 
 export default function SuggestedCommunities({navigation}) {
+  const [communities, setCommunities] = useState([])
+  const currentUser = useSelector(getUserDetails);
+
+  const getUserSuggestedCommunities = async () => {
+    if(communities.length == 0){
+      console.log('fetching communities');
+      const communities =  await getSuggestedCommunities(currentUser.user.id)
+      console.log("The communities are: ", communities)
+      setCommunities(communities)
+    }
+  }
+
+  getUserSuggestedCommunities()
+
   return (
     <View>
       <View className="flex-row">
@@ -15,9 +32,11 @@ export default function SuggestedCommunities({navigation}) {
             </Text>
         </TouchableOpacity>
       </View>
-      <CommunitySelectionCard/>
-      <CommunitySelectionCard/>
-      <CommunitySelectionCard/>
+      {
+        communities?.map((community)=>{
+          return <CommunitySelectionCard  navigation={navigation} name={community.name} description={community.description} key={community.id} id={community.id} image={community.image}/>
+        })
+      }
     </View>
   )
 }

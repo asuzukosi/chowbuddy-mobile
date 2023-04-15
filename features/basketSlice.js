@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getBasket } from '../storage/async_storage';
 
 const initialState = {
-  items: getBasket() ,
+  items: [],
 }
 
 export const basketSlice = createSlice({
@@ -10,52 +9,84 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addToBasket: (state, action) => {
+      console.log("Adding to basket: " + action.payload);
       state.items  = [...state.items, action.payload];
-      updateBasket(state.items);
+      console.log("Added to basket: " + action.payload);
+    },
+    setupBasket: (state, action) => {
+      console.log("Setting up basket: " + action.payload);
+      state.items = action.payload;
+      console.log("Done setting up basket: " + action.payload);
     },
     removeFromBasket: (state, action) => {
-        state.items = state.items.filter( item => item.id != action.payload.id && item.restaurantId != action.payload.id)
-        updateBasket(state.items);
+        console.log("Removing from basket: " + action.payload);
+        let idx = state.items.findIndex(item => item.id === action.payload.id);
+        if (idx >= 0) {
+          let removed = state.items.splice(idx, 1);
+          console.log("Removed from basket: " + removed);
+        }
+        console.log("Done adding item to basket")
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
-export const selectBasketItem =(state)=> state.basket.items;
-export const selectBasketItemByRestaurantIdAndDishId = (state, restaurantId, dishId) => {
-    return state.basket.items.filter(item => item.restaurantId === restaurantId && item.id === dishId);
-    
+export const { addToBasket, removeFromBasket, setupBasket } = basketSlice.actions;
+// get entire basket
+export const selectEntireBasket =(state)=> state.basket.items;
+
+// get all dishes in basket for a particular resturant
+export const getAllDishesForRestaurant = (state, restaurantId)=> {
+   return state.basket.items.filter(item => item.restaurant.id == restaurantId)
 }
 
+// get number of dishes in basket for a particular restaurant
+export const getNumberOfDishesForRestaurant = (state, restaurantId) => {
+  const numberOfDishes = state.basket.items.filter(item => item.restaurant.id === restaurantId)
+  return numberOfDishes.length
+}
+
+// get number of instances of dish in basket
+export const getNumberOfDishes = (state, dishId) =>  {
+  const numberOfDishes = state.basket.items.filter(item => item.id === dishId)
+  return numberOfDishes.length
+}
+
+// calculate total price of items in basket
 export const calculateBasketTotalPrice = (state) => {
     if(state.basket.items.length < 1){
         return 0.00
     }
     let total = 0;
     state.basket.items.forEach(item => {
-        let number = item.price.substring(1);
+        let number = item.price
         number = parseFloat(number);
         total += number;
     })
-    return total
+    return total.toFixed(2)
 }
 
 export const getGroupedItems = (state) => {
-  let groupedItems = []
-  let added = []
-  state.basket.items.forEach((item)=>{
-    if(!added.includes(item)){
-      instances = state.basket.items.filter(i => item.restaurantId === i.restaurantId && item.id === i.id);
-      let grouping = {
-        item: item,
-        count: instances.length
-      }
-      groupedItems.push(grouping)
-      added.push(item)
+  // const uniqueItems = [...new Set(state.basket.items)]
+  const uniqueItems = []
+  const uniqueIds = []
+  state.basket.items.forEach(item => {
+    if (uniqueIds.indexOf(item.id) == -1){
+      uniqueIds.push(item.id)
     }
   })
 
-  return groupedItems;
+  console.log(uniqueIds)
+  uniqueIds.forEach(id => {
+    const items = state.basket.items.filter(item => item.id === id)
+    let newItem = {
+      ...items[0],
+      count: items.length
+    }
+    uniqueItems.push(newItem)
+  })
+
+  return uniqueItems
 }
+
 export default basketSlice.reducer;
