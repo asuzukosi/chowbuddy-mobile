@@ -15,7 +15,7 @@ export const loginCustomer = async (username, password)=> {
          })
     return userData
 }
-
+//isoka
 // function that calls api to register user
 export const registerCustomer = async (username,password,first_name,last_name,email,phone_number,address)=> {
       const userData = await axios.post(BASE_URL+"/customers/",{username:username, password:password, first_name:first_name,last_name:last_name, email:email, phone_number:phone_number, address:address})
