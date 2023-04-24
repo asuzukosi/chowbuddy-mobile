@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { PhoneIcon, MapPinIcon } from "react-native-heroicons/outline";
 
+// This is the delivery trackign app used by the customer to track the location of the deliverer
 export default function DeliveryTrackingCard({navigation, customer, restaurant, deliverer, order}) {
 
   return (

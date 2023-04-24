@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
+// This component implements the communities card
 export default function CommunitiesCard({navigation, name, id, image, description}) {
   return (
     <View>

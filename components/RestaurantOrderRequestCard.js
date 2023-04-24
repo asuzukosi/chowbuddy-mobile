@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
+// This is the UI component used to show an order request on the restaurant app home page.
 export default function RestaurantOrderRequestCard({name, image, user}) {
   return (
     <View className="flex-row p-2 bg-gray-200 rounded-lg mt-2">

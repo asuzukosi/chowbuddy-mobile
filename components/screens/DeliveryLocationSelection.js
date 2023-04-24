@@ -1,3 +1,4 @@
+// Import the required packages and components
 import { View, Text } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import NavigationBar from '../NavigationBar'
@@ -5,12 +6,15 @@ import MapView, { Marker } from 'react-native-maps'
 import LocationSelectionCard from '../LocationSelectionCard'
 import * as Location from 'expo-location';
 
+// this implements the delivery location selection interface
 export default function DeliveryLocationSelection({navigation, route}) {
+  // set up the state for data in the component
   const [location, setLocation] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
 
 
   console.log("The location of the restuarant for the marker is: ", route.params.restaurant)
+  // Use the use effect to request location foreground permission for getting the users location
   useEffect(() => {
     (async () => {
       // request for location access from user
@@ -26,7 +30,9 @@ export default function DeliveryLocationSelection({navigation, route}) {
       })();
     }, []);
 
+  // This is a function that decides if the map should be shown or not
   const showMap = () => {
+    // It checks if the location has been fully set before showing the map
     if(location){
       return <>
                 <MapView initialRegion={{
@@ -56,6 +62,7 @@ export default function DeliveryLocationSelection({navigation, route}) {
       return <View></View>
     }
   }
+  // return the UI component
   return (
     <View className="flex-1">
         <NavigationBar navigation={navigation}/>

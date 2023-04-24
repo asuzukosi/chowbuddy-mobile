@@ -1,10 +1,11 @@
+// import required packages
 import { View, Text } from 'react-native'
 import React from 'react'
 import NavigationBarWithOnlyProfile from '../NavigationBarWithOnlyProfile'
 import MapView, { Marker } from 'react-native-maps'
 import DeliveryRequestCard from '../DeliveryRequestCard'
 
-
+// Implementation of the delivery request page
 export default function DeliveryRequest({navigation, route}) {
   return (
     <View className="flex-1">

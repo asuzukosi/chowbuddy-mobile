@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { ClockIcon, ShoppingBagIcon} from "react-native-heroicons/outline";
 
-
+// The restaurant card component UI implementation
 export default function RestaurantCard({navigation, id, name, image, price_level, ranking}) {
   return (
     <TouchableOpacity className="group relative block overflow-hidden rounded-xl mb-4" onPress={()=>{navigation.navigate("Restaurant", {id: id, name:name, image:image, price_level:price_level, ranking:ranking})}}>

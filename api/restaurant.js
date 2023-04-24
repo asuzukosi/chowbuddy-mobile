@@ -1,7 +1,7 @@
 import axios from 'axios'
 import BASE_URL from './base'
 
-
+// This is a function to get all the restaurants available on the API
 export const getAllRestaurants = async (category=null) => {
    let requestString = BASE_URL + '/restaurants/'
    // based on whether a category is being passed the request string should be formatted
@@ -23,6 +23,7 @@ export const getAllRestaurants = async (category=null) => {
    return restaurants
 }
 
+// This is a function to get information about a specific restaurant from the API
 export const getSpecificRestaurant = async(id)=>{
    let requestString = BASE_URL + '/restaurants/' + id + '/'
    const restaurant = await axios.get(requestString).then((resposne)=>{
@@ -38,6 +39,7 @@ export const getSpecificRestaurant = async(id)=>{
    return restaurant;
 }
 
+// This is a function to search restaurants on the API
 export const searchAllRestaurants = (query) => {
    console.log("Calling search")
    const restaurants = axios.get(BASE_URL+"/restaurants/?search="+query)
@@ -54,7 +56,7 @@ export const searchAllRestaurants = (query) => {
    return restaurants
 }
 
-
+// Get all dishes for a particular restuarant
 export const getAllDishesForRestaurant = (restaurantID) => {
    console.log("MAKING REQUEST FOR DISHES")
    const dishes = axios.get(BASE_URL+"/restaurants/"+restaurantID+"/dishes/")
@@ -72,6 +74,8 @@ export const getAllDishesForRestaurant = (restaurantID) => {
    return dishes
 }
 
+
+// This is a function used to create a new order on the API
 export const makeOrder = async (dishorders, restaurantID, custoemrId, delivererId) =>{
    const order = await axios.post(BASE_URL+"/mealorders/create_order/", {dishorders: dishorders, customer: custoemrId, restaurant:restaurantID, deliverer:delivererId})
          .then((resposne)=>{
@@ -86,6 +90,7 @@ export const makeOrder = async (dishorders, restaurantID, custoemrId, delivererI
    return order
 }
 
+// This is used to get the information of a particular order using a particular orders id
 export const getOrderInformation = (orderID) => {
     axios.get(BASE_URL+"/mealorders/"+orderID)
          .then((resposne)=>{
@@ -96,6 +101,7 @@ export const getOrderInformation = (orderID) => {
          })
 }
 
+// get all orders from the API
 export const getAllOrders = () => {
     axios.get(BASE_URL+"/mealorders/")
          .then((resposne)=>{
@@ -106,6 +112,7 @@ export const getAllOrders = () => {
          })
 }
 
+// get the order by a specific customer
 export const getAllOrdersByCustomer = (customerId) => {
     axios.get(BASE_URL+"/mealorders/get_customers_orders", {customerId: customerId})
          .then((resposne)=>{
@@ -116,6 +123,7 @@ export const getAllOrdersByCustomer = (customerId) => {
          })
 }
 
+// get all ordres from a specific restaurant
 export const getAllOrdersFromARestaurant = (restaruantId)=>{
     axios.get(BASE_URL+"/mealorders/get_restaurants_orders", {restaruantId:restaruantId})
          .then((resposne)=>{

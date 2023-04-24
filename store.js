@@ -1,8 +1,10 @@
+// Import redux toolkit and the reducers to be used in our application
 import { configureStore } from '@reduxjs/toolkit'
 import basketReducer, { setupBasket } from './features/basketSlice'
 import userReducer, { loginUser } from './features/userSlice'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// Setup the store to be used by redux in our application
 export const store = configureStore({
   reducer: {
     basket: basketReducer,
@@ -10,7 +12,7 @@ export const store = configureStore({
   },
 })
 
-
+// Initialize user data from the async storage
 const initUserData = async () => {
   const value = await AsyncStorage.getItem('user')
   if(value === null){
@@ -22,6 +24,7 @@ const initUserData = async () => {
   store.dispatch(loginUser(outputJson));
 }
 
+// Initalize basket data from the async storage
 const initBasketData = async () => {
   const value =  await AsyncStorage.getItem('basket')
   if(value === null){
@@ -34,4 +37,5 @@ const initBasketData = async () => {
 }
 
 // initUserData()
+// initBasketData()
 

@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import * as Location from 'expo-location';
 
 // Rember to set the location on the emulator from None to Custom Location
-
+// impolementation of the expo location third party library
 export default function ExpoLocation() {
   const [location, setLocation] = useState(null)
   const [errorMsg, setErrorMsg] = useEffect(null)

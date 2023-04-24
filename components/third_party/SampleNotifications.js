@@ -11,7 +11,7 @@ Notifications.setNotificationHandler({
   }),
 });
 
-
+// sample use of notification third part library
 export default function SampleNotifications() {
     const [expoPushToken, setExpoPushToken] = useState('');
     const [notification, setNotification] = useState(false);

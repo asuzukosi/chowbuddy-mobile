@@ -1,7 +1,7 @@
 import axios from 'axios'
 import BASE_URL from './base'
 
-
+// This is a function to get all the available meal plans from the API
 export const getAllMealPlans = () => {
     axios.get(BASE_URL+"/mealplans/")
          .then((response)=>{
@@ -12,6 +12,7 @@ export const getAllMealPlans = () => {
          })
 }
 
+// This is a function to get all the meal plans for a particular customer
 export const getAllMealPlansForACustomer = (custoemrId) => {
     axios.get(BASE_URL+"/customers/"+custoemrId+"/get_all_my_meal_plans/")
          .then((response)=>{
@@ -22,6 +23,7 @@ export const getAllMealPlansForACustomer = (custoemrId) => {
          })
 }
 
+// This is a function to get the information for a particular meal plan
 export const getMealPlanInfor = (mealPlanId) => {
     axios.get(BASE_URL+"/mealplans/"+mealPlanId)
          .then((response)=>{
@@ -32,6 +34,7 @@ export const getMealPlanInfor = (mealPlanId) => {
          })
 }
 
+// This is a fucntion to get the next time interval for a particular meal plan
 export const getNextIntervalForMealPlan = (mealPlanId) => {
     axios.get(BASE_URL+"/mealplans/"+mealPlanId)
          .then((response)=>{

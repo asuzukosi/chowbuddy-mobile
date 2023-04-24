@@ -1,3 +1,4 @@
+// Import the required packages and components
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
 import {PlusIcon, MinusIcon} from "react-native-heroicons/outline";
@@ -6,14 +7,18 @@ import { addToBasket, getNumberOfDishes, removeFromBasket, selectEntireBasket } 
 import { setBasket } from '../storage/async_storage';
 
 
-
+// This is the UI impoement of the dish card component on the restaurant page
 export default function RestaurantDishCard({navigation, name, restaurantName, restaurantId, id, image, price}) {
+
+  // setup redux store and component stte
   const dispatch = useDispatch();
   const numberOfItems = useSelector((state)=> getNumberOfDishes(state, id));
   const entireBasket = useSelector(selectEntireBasket);
 
   setBasket(entireBasket)
   console.log(entireBasket);
+
+  // restructure the dish object for cross compatibilty
   const dishObject = {
     name: name,
     id: id,
@@ -25,7 +30,7 @@ export default function RestaurantDishCard({navigation, name, restaurantName, re
     }
   }
 
-
+  // returnt the UI component
   return (
     <View className="flex-row p-2 bg-gray-200 rounded-lg mt-2">
       <Image source={{uri: "http://127.0.0.1:8000" + image}} className="h-16 w-16 object-cover transition duration-500 group-hover:scale-105 sm:h-42 rounded-lg"/>

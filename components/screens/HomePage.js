@@ -1,3 +1,4 @@
+// import required packages and components
 import { View, Text, ScrollView } from 'react-native'
 import React, {useState} from 'react'
 import NavigationBar from '../NavigationBar'
@@ -6,10 +7,13 @@ import CategoriesGrid from '../CategoriesGrid';
 import DealsCard from '../DealsCard';
 import RestaurantScrollBar from '../RestaurantScrollBar';
 
-
+// this is the implementation of the homepage component
 export default function HomePage({navigation}) {
+  // set up the state of the component which is used to store the selected category information
   const [category, setCategory] = useState(null)
 
+
+  // render the UI component
   return (
     <View className="flex-1">
         <NavigationBar navigation={navigation}/>

@@ -1,23 +1,30 @@
+// Import the redux methods to create slices
 import { createSlice } from '@reduxjs/toolkit'
 
+// We will setup our initial state of our store
 const initialState = {
   items: [],
 }
 
+// This is used to create the slice for our basket store
 export const basketSlice = createSlice({
   name: 'basket',
   initialState,
   reducers: {
+    // This method is used to add to an item to our basket store
     addToBasket: (state, action) => {
       console.log("Adding to basket: " + action.payload);
       state.items  = [...state.items, action.payload];
       console.log("Added to basket: " + action.payload);
     },
+    // This is used to setup the basket infromation from preloaded information
     setupBasket: (state, action) => {
       console.log("Setting up basket: " + action.payload);
       state.items = action.payload;
       console.log("Done setting up basket: " + action.payload);
     },
+
+    // This is used to remove an item from the basket
     removeFromBasket: (state, action) => {
         console.log("Removing from basket: " + action.payload);
         let idx = state.items.findIndex(item => item.id === action.payload.id);
@@ -66,6 +73,7 @@ export const calculateBasketTotalPrice = (state) => {
     return total.toFixed(2)
 }
 
+// Get the items in the basket grouped by meal
 export const getGroupedItems = (state) => {
   // const uniqueItems = [...new Set(state.basket.items)]
   const uniqueItems = []

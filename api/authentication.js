@@ -15,7 +15,6 @@ export const loginCustomer = async (username, password)=> {
          })
     return userData
 }
-//isoka
 // function that calls api to register user
 export const registerCustomer = async (username,password,first_name,last_name,email,phone_number,address)=> {
       const userData = await axios.post(BASE_URL+"/customers/",{username:username, password:password, first_name:first_name,last_name:last_name, email:email, phone_number:phone_number, address:address})
@@ -32,6 +31,7 @@ export const registerCustomer = async (username,password,first_name,last_name,em
       return userData;
     }
 
+// this is the function to login the deliverer on the app
 export const loginDeliverer = (username, password)=> {
     axios.post(BASE_URL+"/login/deliverer/",{username:username, password:password})
          .then((response)=>{
@@ -42,6 +42,7 @@ export const loginDeliverer = (username, password)=> {
          })
 }
 
+// this is a function to regiser deliverers on the app
 export const registerDeliverer = (username, email, password, location)=> {
     axios.post(BASE_URL+"/deliverers/", {username:username, email:email, password:password, location:location})
          .then((response)=>{
@@ -52,7 +53,7 @@ export const registerDeliverer = (username, email, password, location)=> {
          })
 }
 
-
+// this is a function to login restaurants on the application
 export const loginRestaurant = ()=> {
     axios.post(BASE_URL+"/login/restaurants/",{username:username, password:password})
          .then((response)=>{
@@ -63,6 +64,7 @@ export const loginRestaurant = ()=> {
          })
 }
 
+// thi is a functiont to register restaurants on the application
 export const registerRestaurant = (name, email, description, address, phone, image, long, lat, rating, ranking, price_level)=> {
     axios.post(BASE_URL+"/restaurants/",{username:username, email:email, password:password, location:location})
         .then((response)=>{

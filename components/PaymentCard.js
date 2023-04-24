@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { CreditCardIcon } from "react-native-heroicons/outline";
 
-
+// This is the payment card component of the payment page
 export default function PaymentCard({restaurantName}) {
   return (
     <View className="mt-3 border ml-3 mr-3 border-indigo-600 p-5 border-dashed rounded-lg">

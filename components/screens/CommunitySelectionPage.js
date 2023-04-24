@@ -1,8 +1,11 @@
+// Import required component and packages
 import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import MembershipCommunities from '../MembershipCommunities'
 import SuggestedCommunities from '../SuggestedCommunities'
 
+
+// Implements the UI of the community selection page
 export default function CommunitySelectionPage({navigation}) {
   return (
     <View className="flex">

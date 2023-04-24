@@ -1,3 +1,4 @@
+// Import all required components and packages
 import { View, Text, SafeAreaView, TextInput, TouchableOpacity } from 'react-native'
 import React, {useState}from 'react'
 import { SocialIcon } from 'react-native-elements'
@@ -6,8 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails, loginUser } from '../features/userSlice';
 import { storeUser } from '../storage/async_storage';
 
+// This is the component that implements the sign up form on the sign up page
 export default function SignUpForm({navigation}) {
+  
 
+  // Set up the component state for all the items in the form
   const dispatch = useDispatch()
   const currentUserData = useSelector(getUserDetails)
   const [username, setUsername] = useState('');
@@ -32,6 +36,7 @@ export default function SignUpForm({navigation}) {
       navigation.navigate("Home")
   }
 
+  // return the UI component
   return (
     <View className="flex flex-col max-w-md py-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
 

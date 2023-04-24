@@ -1,3 +1,4 @@
+// Import required packages and components
 import { View, Text } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import NavigationBarWithOnlyProfile from '../NavigationBarWithOnlyProfile'
@@ -7,8 +8,10 @@ import { Accelerometer } from 'expo-sensors';
 import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
 
-
+// this is the implementation of the delivery tracking page
 export default function DeliveryTrackingPage({navigation, route}) {
+
+  // inititate the state of the coordinates in component
   const [{ x, y, z }, setData] = useState({
         x: 0,
         y: 0,
@@ -16,23 +19,30 @@ export default function DeliveryTrackingPage({navigation, route}) {
       });
   const [subscription, setSubscription] = useState(null);
   const [granted, setGranted] = useState(false);
+  
 
+  // set up accelerometer update speed
   const _slow = () => Accelerometer.setUpdateInterval(1000);
   const _fast = () => Accelerometer.setUpdateInterval(16);
-
+  
+  // set fast acceloremeter update speed
   _fast();
 
+  // listen the accelerometer speed updates
   const _subscribe = () => {
     setSubscription(
       Accelerometer.addListener(setData)
     );
   };
 
+
+  // stop listening to accelerometer speed updates
   const _unsubscribe = () => {
     subscription && subscription.remove();
     setSubscription(null);
   };
 
+  // use useeffect to start listening to accelerometer speed updates
   useEffect(() => {
     _subscribe();
     return () => _unsubscribe();
@@ -42,6 +52,7 @@ export default function DeliveryTrackingPage({navigation, route}) {
   // set the name of the background location task
   const LOCATION_TASK_NAME = 'background-location-task';
 
+  // requrest permission to track location
   const requestPermissions = async () => {
     if(!granted){
         const { status: foregroundStatus } = await Location.requestForegroundPermissionsAsync();
@@ -56,6 +67,8 @@ export default function DeliveryTrackingPage({navigation, route}) {
       setGranted(true);
     }
   };
+
+// request locatioin permission
 requestPermissions()
 
 // define the backroud location tak to update the location frequenty
@@ -71,7 +84,7 @@ TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     }
   });
 
-
+  // render UI component
   return (
     <View className="flex-1">
       <NavigationBarWithOnlyProfile navigation={navigation}/>

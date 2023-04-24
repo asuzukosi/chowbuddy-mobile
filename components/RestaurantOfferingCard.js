@@ -1,6 +1,9 @@
+// Import the required components and packages
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
+
+// This is used to get the restaurant offererings card, i.e the dishes being offered by a restaurant
 export default function RestaurantOfferingCard({name, price, image}) {
   return (
     <View className="mt-2 mr-2">

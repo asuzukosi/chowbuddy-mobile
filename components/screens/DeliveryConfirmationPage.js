@@ -1,3 +1,4 @@
+// Import the required packages and components
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import NavigationBar from '../NavigationBar'
@@ -6,7 +7,7 @@ import { VirtualKeyboard } from 'react-native-screen-keyboard';
 import DeliveryConfirmationItem from '../DeliveryConfirmationItem';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-
+// This implements the delivery confirmation page
 export default function DeliveryConfirmationPage({navigation, route}) {
   const dishOrders = route.params.order.meal.dish_orders
   const [hasPermission, setHasPermission] = useState(null);
@@ -14,6 +15,7 @@ export default function DeliveryConfirmationPage({navigation, route}) {
   const [barCodeScannerInput, setBarCodeScannerInput] = useState(false);
   const [code, setCode] = useState("");
 
+  // Use the useeffect componenet to request for camera access to use barcode scanner
   useEffect(() => {
           const getBarCodeScannerPermissions = async () => {
             const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -23,6 +25,8 @@ export default function DeliveryConfirmationPage({navigation, route}) {
           getBarCodeScannerPermissions();
         }, []);
 
+
+  // this is the function to be executed after the barcode has been sucesssfully scanned
   const handleBarCodeScanned = ({ type, data }) => {
           setScanned(true);
           alert(`Bar code with type ${type} and data ${data} has been scanned!`);
@@ -35,7 +39,7 @@ export default function DeliveryConfirmationPage({navigation, route}) {
         if (hasPermission === false) {
           return <Text>No access to camera</Text>;
         }
-
+  // This is a function to show the barcode scanner component
   const showBarCode =() => {
       if(barCodeScannerInput){
         return <>
@@ -50,10 +54,14 @@ export default function DeliveryConfirmationPage({navigation, route}) {
         return <></>
       }
   }
+  // This function allows us to toggle if the barcode component should be shown or not
   const toggleShowBarCode =() => {
     setBarCodeScannerInput(!barCodeScannerInput);
   }
 
+
+  // this is used handle the operation of a key being pressed on the
+  // keypad and checks if the correct code has been entered
   const keyPressedHandler = (key) => {
     if(key !== 'back'){
       let newCode = code
@@ -63,6 +71,7 @@ export default function DeliveryConfirmationPage({navigation, route}) {
       navigation.navigate("Home")
     }
   }
+  // renders the UI implementation
   return (
     <View className="flex-1">
       <NavigationBar navigation={navigation}/>

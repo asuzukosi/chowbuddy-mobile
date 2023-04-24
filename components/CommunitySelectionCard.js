@@ -1,6 +1,9 @@
+// Import required components
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
+
+// This is the section used to show the community as a card that can be selected by a user to view messages within the community
 export default function CommunitySelectionCard({navigation, name, description, image, id}) {
   return (
     <TouchableOpacity className="relative rounded-lg border border-gray-200 shadow-lg mt-2" onPress={()=>{navigation.navigate("Community",{id:id, name:name, image:image, description:description})}}>

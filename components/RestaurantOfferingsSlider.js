@@ -1,7 +1,9 @@
+// Import the required packages and components
 import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import RestaurantOfferingCard from './RestaurantOfferingCard'
 
+// UI component to list all the offerings of a particular customre
 export default function RestaurantOfferingsSlider({navigation, dishes}) {
   return (
     <View className="mt-4">

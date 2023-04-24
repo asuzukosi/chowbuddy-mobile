@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
+// This is the dish card that is used in the order receipt box which uses the grouped information from the baseket
 export default function OrderReceiptBoxDishCard({navigation, id, count, name, price, restaurant, image}) {
   console.log(image)
   return (

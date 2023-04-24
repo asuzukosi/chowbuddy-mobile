@@ -2,6 +2,7 @@ import { View, Text, Image, TouchableOpacity, ImageBackground } from 'react-nati
 import React from 'react'
 import { ClockIcon, ShoppingBagIcon} from "react-native-heroicons/outline";
 
+// This is the component used to show the available deals
 export default function DealsCard() {
   return (
     <TouchableOpacity className="group relative block overflow-hidden rounded-xl mb-4 ml-2 mr-2">

@@ -2,9 +2,10 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { PhoneIcon, MapPinIcon } from "react-native-heroicons/outline";
 
-
+// This is a component used on the deliverers app request confirmation page to accept or reject  a delivery request.
 export default function DeliveryRequestCard({navigation, customer, restaurant, order, deliverer}) {
   return (
+    // Order information
     <View className="z-10 absolute bottom-0 w-full bg-white p-4 pb-12 rounded-t-3xl">
       <Text className="px-3 font-extrabold text-lg">Delivery Request</Text>
             <View className="pt-2 pl-2 flex-row mt-3 space-x-3">
@@ -57,11 +58,12 @@ export default function DeliveryRequestCard({navigation, customer, restaurant, o
       </View>
 
         <View className="flex-row space-x-2">
-
+            {/* Accept button */}
             <TouchableOpacity onPress={()=>{navigation.navigate("DeliveryTracking", {customer:customer, restaurant:restaurant, deliverer:deliverer, order:order})}} className="rounded-lg w-36 mt-3 mr-3 bg-indigo-500 p-4 items-center">
                 <Text className="font-bold text-white align-middle">Accept</Text>
             </TouchableOpacity>
 
+            {/* Reject button */}
             <TouchableOpacity onPress={()=>{navigation.navigate("DeliveryTracking", {customer:customer, deliverer:deliverer, order:order, restaurant:restaurant})}} className="rounded-lg w-36 mt-3 mr-3 bg-white border border-indigo-500 p-4 items-center">
                 <Text className="font-bold text-indigo-500 align-middle">Reject</Text>
             </TouchableOpacity>

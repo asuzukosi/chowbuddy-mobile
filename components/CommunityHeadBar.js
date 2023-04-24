@@ -2,14 +2,17 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 
-
+// This is the heeadr bar for the communities page
 export default function CommunityHeadBar({navigation, name, image}) {
+
+  // This sets the url based on if it is a relative path or absolute path
   let url = ''
   if(image.startsWith("http")){
      url = image
   }else {
      url = "http://127.0.0.1:8000" + image
   }
+  // Returns the UI code
   return (
     <View className="p-4 flex-row">
       <TouchableOpacity className="flex-1" onPress={()=>{navigation.navigate("CommunitySelection")}}>

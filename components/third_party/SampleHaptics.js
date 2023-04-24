@@ -3,7 +3,6 @@ import { StyleSheet, View, Text, Button } from 'react-native';
 import * as Haptics from 'expo-haptics';
 
 // use of haptics after special events
-
 export default function SampleHaptics() {
   return (
     <View className="mt-28">

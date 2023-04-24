@@ -1,6 +1,7 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
 import { View, StyleSheet } from 'react-native';
 
+// implementation of the apple authentication third party library
 export default function AppleAuthenticationSample() {
   return (
     <View className="mt-28">

@@ -1,7 +1,10 @@
+// Import the required packages and components
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { ClockIcon} from "react-native-heroicons/outline";
 
+
+// this is the implementation of the top card containing the restarant information on the restaurant page
 export default function RestaurantTopCard({navigation, name, image, price_level, ranking}) {
   return (
     <View>

@@ -1,3 +1,4 @@
+// Import required packages and components
 import { View, Text, ScrollView } from 'react-native'
 import React, {useState} from 'react'
 import ButtomNavigationBarMinimized from '../ButtomNavigationBarMinimized'
@@ -10,12 +11,15 @@ import { getUserDetails } from '../../features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-
+// this is the restaurant orders page
 export default function RestaurantOrdersPage({navigation}) {
 
+  // setup the state of the component
   const [dishes, setDishes] = useState([])
   const currentUser = useSelector(getUserDetails);
 
+
+  // this is a function to get all the dishes of a particular restaurant
   const getDishesForRestaurant = async () => {
     if(dishes.length == 0){
       const apiDishes = await getAllDishesForRestaurant(1)
@@ -25,8 +29,11 @@ export default function RestaurantOrdersPage({navigation}) {
    
   }
   
+  // get dishes for restaurant
   getDishesForRestaurant()
 
+
+  // render UI of the page
   return (
     <View className="flex-1">
       <NavigationBarWithOnlyCommunities navigation={navigation}/>
@@ -40,6 +47,7 @@ export default function RestaurantOrdersPage({navigation}) {
         <View className=" h-80">
             <ScrollView>
               {
+                // loop through the dishes and render them as dish cards
                 dishes?.map(dish => {
                     return <RestaurantOrderRequestCard user={currentUser} key={dish.id} image={dish.image} name={dish.name}/>
                 })

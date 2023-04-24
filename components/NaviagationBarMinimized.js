@@ -1,6 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
+
+// This is the minimized version of the top bar naviagation which only contains the logo,
+// and it is used in the log in and signup pages
 export default function NaviagationBarMinimized() {
   return (
     <View className="bg-white pt-5">

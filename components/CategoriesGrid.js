@@ -1,9 +1,12 @@
+// Import react native components
 import { View, Text, TouchableOpacity, Image  } from 'react-native'
 import React, {useState} from 'react'
 
-
+// Component that implements the categories grid section
 export default function CategoriesGrid({naviation, setSearchCategory}) {
   const [selectedCategory, setSelectedCategory] = useState(null)
+
+  // This will set the style of the box based on whether it is the selected box
   const getBoxStyle = (id) => {
     // returns the style of the box based on whether it is selected or not
     if(id === selectedCategory){
@@ -13,6 +16,7 @@ export default function CategoriesGrid({naviation, setSearchCategory}) {
     }
   }
 
+  // This sets the selected button to the ID fo the selected box
   const setSelectedCategoryWithButton = (id) => {
     // Function that is triggeerd when user clicks on a particular category box
     if(id === selectedCategory){

@@ -4,6 +4,7 @@ import * as Calendar from 'expo-calendar';
 
 // This will be used in the meal plan section of the application
 
+// Implementation of calender third party library
 export default function UseCalenderExample() {
   useEffect(() => {
     (async () => {

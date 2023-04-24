@@ -4,12 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { calculateBasketTotalPrice, getGroupedItems } from '../features/basketSlice';
 import { getSpecificRestaurant } from '../api/restaurant';
 
+// this is the order total box
 export default function OrderTotalBox({navigation}) {
+
+  // get the user data from the redux state, and then initialize the state on the component
   const totalPrice =  useSelector(calculateBasketTotalPrice)
   const groupedItems = useSelector(getGroupedItems)
   const instanceItem = groupedItems[0]
   const [restaurant, setRestaurant] = useState(null)
 
+  // this is a function to get the restaurant information based on the id in the state
   const getRestaurantInformation = async() =>{
     if(restaurant == null){
       const restaurant = await getSpecificRestaurant(instanceItem.restaurant.id)
@@ -17,10 +21,10 @@ export default function OrderTotalBox({navigation}) {
     }
    
   }
-
+  // call the restaurant information 
   getRestaurantInformation()
 
-
+  // return UI component
   return (
     <View className="bg-indigo-600 rounded-lg p-4 bottom-24 absolute w-11/12 ml-4">
     <View className="flex-row p-3">

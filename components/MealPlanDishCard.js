@@ -1,6 +1,8 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 
+
+// This is the component that implements the dish card component in the meal plan page
 export default function MealPlanDishCard({id, name, restaurant, count, price, image}) {
   return (
     <View className="flex-row p-2 bg-gray-200 rounded-lg mt-2">

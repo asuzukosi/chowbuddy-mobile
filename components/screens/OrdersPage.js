@@ -16,8 +16,9 @@ if(Platform.OS !== "ios"){
 
 }
 
-
+//  This is the orders page that shows what is currently in the users basket
 export default function OrdersPage({navigation}) {
+  // use useeffect to request for tracking for apple users
   useEffect(() => {
             (async () => {
               const { status } = await requestTrackingPermissionsAsync();
@@ -27,6 +28,7 @@ export default function OrdersPage({navigation}) {
             })();
           }, []);
 
+  // this is a funciton to check if tracking permission has been granted to the application for the user
   const checkForTrackingPermissionsAsync = async () => {
           const { granted } = await getTrackingPermissionsAsync();
 
@@ -34,7 +36,12 @@ export default function OrdersPage({navigation}) {
               // Your app is authorized to track the user or their device
               }
           };
+  
+  // check if user tracking is granted to the application
+  checkForTrackingPermissionsAsync();
 
+
+  // render the UI of the application
   return (
     <View className="flex-1">
       <NavigationBar navigation={navigation}/>

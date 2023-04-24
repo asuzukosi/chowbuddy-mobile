@@ -3,8 +3,11 @@ import React, {useState} from 'react'
 import CommunitiesCard from './CommunitiesCard'
 import { getAllCommunities } from '../api/communities'
 
+// This is the component to return the communities scroll bar
 export default function CommunitiesScrollBar({navigation}) {
   const [communities, setCommunites] = useState([])
+
+  // This function gets all the communities from the API and stores them in state of the component
   const getCommunitiesFromAPI = async ()=> {
     if(communities.length == 0){
       const api_communites = await getAllCommunities()
@@ -13,6 +16,7 @@ export default function CommunitiesScrollBar({navigation}) {
     }
     
   }
+  // Gets the communities fromt the API
   getCommunitiesFromAPI()
   return (
     <View className="mb-2 mt-1">

@@ -7,6 +7,7 @@ import * as Location from 'expo-location';
   // set the name of the background location task
   const LOCATION_TASK_NAME = 'background-location-task';
 
+  // implementation for permission request for location third party library
   const requestPermissions = async () => {
     const { status: foregroundStatus } = await Location.requestForegroundPermissionsAsync();
     if (foregroundStatus === 'granted') {

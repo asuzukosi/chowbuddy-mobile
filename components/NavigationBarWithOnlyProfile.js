@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { UserIcon, Bars3Icon} from "react-native-heroicons/outline";
 
-
+// This is a variation of the navigation bar where the only additional button is the profile button
 export default function NavigationBarWithOnlyProfile() {
   return (
     <View className="bg-white pt-5">

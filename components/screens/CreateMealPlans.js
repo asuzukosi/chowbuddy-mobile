@@ -1,3 +1,4 @@
+// Import required component and packages
 import { View, Text, ScrollView } from 'react-native'
 import React, {useEffect} from 'react'
 import NavigationBar from '../NavigationBar'
@@ -8,10 +9,11 @@ import { getGroupedItems } from '../../features/basketSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import * as ExpoCalendar from 'expo-calendar';
 
-
+// Implement the component to create the meal plan
 export default function CreateMealPlans({navigation}) {
   const groupedItems = useSelector(getGroupedItems)
 
+  // use the use effect to request for calender access if it is not already granted
   useEffect(() => {
     (async () => {
       const { status } = await ExpoCalendar.requestCalendarPermissionsAsync();
@@ -23,11 +25,14 @@ export default function CreateMealPlans({navigation}) {
     })();
   }, []);
 
+
+  // get the derauls callender source from expo calender
   async function getDefaultCalendarSource() {
     const defaultCalendar = await ExpoCalendar.getDefaultCalendarAsync();
     return defaultCalendar.source;
   }
   
+  // create the calender item based on information provided in the form
   async function createCalendar() {
     const defaultCalendarSource =
       Platform.OS === 'ios'
@@ -46,6 +51,7 @@ export default function CreateMealPlans({navigation}) {
     console.log(`Your new calendar ID is: ${newCalendarID}`);
   }
 
+  // this is the UI implementation
   return (
     <View className="flex-1">
       <NavigationBar navigation={navigation}/>

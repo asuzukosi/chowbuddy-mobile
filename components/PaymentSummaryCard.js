@@ -3,10 +3,13 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { calculateBasketTotalPrice } from '../features/basketSlice';
 
+// This is the payment summary card component that is used in the orders card
 export default function PaymentSummaryCard({navigation}) {
 
+  // This retreives the total price of items in the basket from the redux state
   const totalPrice =  useSelector(calculateBasketTotalPrice)
 
+  // return UI component
   return (
     <View className="bg-indigo-600 rounded-lg p-4 w-11/12 ml-4">
     <View className="flex-row p-3">

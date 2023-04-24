@@ -1,3 +1,4 @@
+// Import the required packages and components
 import { View, Text, ScrollView } from 'react-native'
 import React, {useState} from 'react'
 import NavigationBar from '../NavigationBar'
@@ -6,12 +7,14 @@ import CommunitiesScrollBar from '../CommunitiesScrollBar';
 import RestaurantScrollBar from '../RestaurantScrollBar';
 import ButtomNaviagationBar from '../ButtomNaviagationBar';
 
-
+// This is the UI implementation of the search page
 export default function SearchPage({navigation}) {
 
+  // set the default component state 
   const [searchQuery, setSearchQuery] = useState(null)
   console.log("The search query from the search page is: " + searchQuery)
 
+  // rendr the UI implementation
   return (
     <View className="flex-1">
       <NavigationBar navigation={navigation}/>

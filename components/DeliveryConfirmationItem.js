@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 
+// This is the component used to show a particular item on the delivery confirmation page
 export default function DeliveryConfirmationItem({navigation, dish, restaurant, quantity, price}) {
   return (
     <View className="flex-row space-x-6 w-full mb-5">

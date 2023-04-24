@@ -1,6 +1,9 @@
+// Import required packages and components
 import { View, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native'
 import React from 'react'
 
+
+// This implements the default start page of the application, this start page is used when the user is not logged in
 export default function StartPage({navigation}) {
   return (
     <SafeAreaView className="flex-1 bg-indigo-600 flex-col justify-center items-center">

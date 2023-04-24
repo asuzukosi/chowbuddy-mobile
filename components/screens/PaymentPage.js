@@ -1,3 +1,4 @@
+// import required packages and components
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import NavigationBar from '../NavigationBar'
@@ -14,12 +15,13 @@ import * as Haptics from 'expo-haptics';
 
 
 
-
+// This is the implementation of the payment page
 export default function PaymentPage({navigation, route}) {
+  // get the grouped items and current user from the redux store
   const groupedItems = useSelector(getGroupedItems)
   const currentUser = useSelector(getUserDetails);
 
- 
+  // this function creates and oredr on the API
   const createOrderOnAPI = async () => {
     // first get deliverer details
     const deliverer = await getDelivererInformation(1)
@@ -37,10 +39,14 @@ export default function PaymentPage({navigation, route}) {
       dishOrders.push(item)
     })
     const order = await makeOrder(dishOrders, route.params.restaurant.id, customer.id, deliverer.id)
+    // sends haptic feedback when order creation is successful
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
+    // navigate to location selection page after order creation is successful
     navigation.navigate("DeliveryLocationSelection", {restaurant:route.params.restaurant, customer:customer, deliverer:deliverer, order:order})
   }
 
+
+  // render UI of the page
   return (
     <View className="flex-1">
       <NavigationBar/>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Accelerometer } from 'expo-sensors';
 
+// implmentation of the accelerometer third party library
 export default function AccelerometerSample() {
     const [{ x, y, z }, setData] = useState({
         x: 0,
