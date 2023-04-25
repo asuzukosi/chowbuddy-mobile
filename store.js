@@ -36,6 +36,6 @@ const initBasketData = async () => {
   store.dispatch(setupBasket(outputJson));
 }
 
-// initUserData()
-// initBasketData()
+initUserData()
+initBasketData()
 

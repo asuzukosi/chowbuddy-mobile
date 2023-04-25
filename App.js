@@ -20,7 +20,8 @@ import DeliveryLocationSelectionsPage from './components/screens/DeliveryLocatio
 import DeliverRequest from './components/screens/DeliveryRequest';
 import DeliveryTrackingPage from './components/screens/DeliveryTrackingPage';
 import RestaurantPage from './components/screens/RestaurantPage';
-import { isLoggedIn } from "./features/userSlice";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 // Import store to be used for redux and redux provider from the redux API
 import { store } from './store'
@@ -28,11 +29,17 @@ import { Provider } from 'react-redux'
 
 
 // Check if the user is signed in
-const getIsSignedIn = () => {
+const getIsSignedIn = async () => {
   // add business logic for checking if the user is signed in here
-  const loggedIn = store.user.isLoggedIn
-  // return loggedIn
-  return false
+  const value = await AsyncStorage.getItem('user')
+  if(value === null){
+    console.log('No user is logged in');
+    return false
+  } else {
+    console.log("User is logged in")
+    return true
+  }
+  
 }
 
 // Build the stack navigator to be used for navigation
@@ -45,7 +52,7 @@ export default function App() {
     <NavigationContainer>
       <Provider store={store}>
         <Stack.Navigator screenOptions={{headerShown: false}}>
-          {isSignedIn ? (
+          {false ? (
           // pages for if the user is signed in
           <>
               <Stack.Screen name="Home" component={HomePage}/>
