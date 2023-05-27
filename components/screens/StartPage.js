@@ -1,10 +1,21 @@
 // Import required packages and components
 import { View, Text, TouchableOpacity, SafeAreaView, Image } from 'react-native'
 import React from 'react'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserDetails } from '../../features/userSlice';
 
 // This implements the default start page of the application, this start page is used when the user is not logged in
 export default function StartPage({navigation}) {
+  const currentUserData = useSelector(getUserDetails)
+
+  const handleOnpress = () => {
+    if (currentUserData.isLoggedIn == true) {
+          navigation.navigate("Home")
+    }
+    else {
+        navigation.navigate('SignUp')
+    }
+  }
   return (
     <SafeAreaView className="flex-1 bg-indigo-600 flex-col justify-center items-center">
       {/* Welcome message  */}
@@ -23,7 +34,7 @@ export default function StartPage({navigation}) {
       {/* Get started button */}
       <TouchableOpacity 
         className="!z-5 mt-10 relative flex flex-col rounded-[20px] max-w-[300px] bg-white bg-clip-border shadow-3xl shadow-shadow-500 w-full !p-6 3xl:p-![18px] undefined"
-        onPress={() => navigation.navigate('SignUp')}
+        onPress={() => handleOnpress()}
         >
         <View className="relative justify-between text-center">
           <Text className="text-xl font-bold text-navy-700 text-center dark:text-white text-indigo-600">
